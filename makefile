@@ -31,7 +31,7 @@ sysdeps:
 	if command -v apt-get >/dev/null 2>&1; then \
 		sudo apt-get update && sudo apt-get install -y \
 			ffmpeg texlive texlive-latex-extra texlive-fonts-extra \
-			sox libcairo2-dev libpango1.0-dev; \
+			sox libcairo2-dev libpango1.0-dev pkg-config python3-dev; \
 		wget -qO- https://astral.sh/uv/install.sh | sh; \
 	elif command -v brew >/dev/null 2>&1; then \
 		brew install ffmpeg sox cairo pango mactex; \

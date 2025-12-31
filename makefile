@@ -9,8 +9,8 @@ all: uv sysdeps venv deps
 # Install uv
 uv:
 	@if ! command -v uv >/dev/null 2>&1; then \
-		echo "uv not found — installing locally into $(VENV)..."; \
-		wget -qO- https://astral.sh/uv/install.sh | sh -s -- --install-dir $(VENV)/bin; \
+		echo "uv not found — installing globally..."; \
+		wget -qO- https://astral.sh/uv/install.sh | sh; \
 	else \
 		echo "uv already installed on system."; \
 	fi

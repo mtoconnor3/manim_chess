@@ -18,12 +18,12 @@ uv:
 # Create virtual environment using uv
 venv: uv
 	@if [ ! -d $(VENV) ]; then \
-		uv venv $(VENV); \
+		/root/.local/bin/uv venv $(VENV); \
 	fi
 
 # Install Python dependencies
 deps: venv
-	$(VENV)/bin/python -m uv pip install python-chess manim numpy networkx
+	/root/.local/bin/uv pip install --python .manimchess/bin/python python-chess manim numpy networkx
 
 # Install system dependencies required by Manim
 sysdeps:

@@ -4,7 +4,16 @@ PIP=$(VENV)/bin/pip
 
 .PHONY: all venv deps sysdeps clean manim-render run
 
-all: sysdeps venv deps
+all: uv sysdeps venv deps
+
+# Install uv
+uv:
+	@if ! command -v uv >/dev/null 2>&1; then \
+		echo "uv not found — installing locally into $(VENV)..."; \
+		wget -qO- https://astral.sh/uv/install.sh | sh -s -- --install-dir $(VENV)/bin; \
+	else \
+		echo "uv already installed on system."; \
+	fi
 
 # Create virtual environment using uv
 venv:
@@ -21,6 +30,7 @@ sysdeps:
 		sudo apt-get update && sudo apt-get install -y \
 			ffmpeg texlive texlive-latex-extra texlive-fonts-extra \
 			sox libcairo2-dev libpango1.0-dev; \
+		wget -qO- https://astral.sh/uv/install.sh | sh; \
 	elif command -v brew >/dev/null 2>&1; then \
 		brew install ffmpeg sox cairo pango mactex; \
 	else \

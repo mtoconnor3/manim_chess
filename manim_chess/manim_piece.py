@@ -12,7 +12,7 @@ class ManimPiece(Group):
         self.move_to_square(square)
 
     def load_svg(self, piece: ch.Piece):
-        mob = SVGMobject(f"assets/{piece.symbol()}.svg").scale(0.4)
+        mob = SVGMobject(f"assets/{piece.symbol().lower()}.svg").scale(0.4)
 
         if piece.color == ch.WHITE:
             mob.set_fill(WHITE, opacity=1)

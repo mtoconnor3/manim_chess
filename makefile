@@ -17,16 +17,14 @@ deps: venv
 # Install system dependencies required by Manim
 sysdeps:
 	@echo "Installing system dependencies for Manim..."
-	# Linux (apt)
-	if command -v apt-get >/dev/null; then \
+	if command -v apt-get >/dev/null 2>&1; then \
 		sudo apt-get update && sudo apt-get install -y \
 			ffmpeg texlive texlive-latex-extra texlive-fonts-extra \
 			sox libcairo2-dev libpango1.0-dev; \
-	# MacOS (brew)
-	elif command -v brew >/dev/null; then \
-		brew install ffmpeg mactex sox cairo pango; \
+	elif command -v brew >/dev/null 2>&1; then \
+		brew install ffmpeg sox cairo pango mactex; \
 	else \
-		echo "No supported package manager found (apt/brew). Install ffmpeg manually."; \
+		echo "No supported package manager found (apt/brew). Install ffmpeg + LaTeX manually."; \
 	fi
 
 # Remove virtual environment and build artifacts
